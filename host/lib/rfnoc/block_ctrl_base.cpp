@@ -162,6 +162,7 @@ void block_ctrl_base::_init_block_args()
         fs_path arg_type_path = arg_path / arg["port"] / arg["name"] / "type";
         _tree->create<std::string>(arg_type_path).set(arg["type"]);
         fs_path arg_val_path  = arg_path / arg["port"] / arg["name"] / "value";
+        UHD_MSG(status) << "added arg path: " << arg_val_path << std::endl;
         if (arg["type"] == "int_vector") { throw uhd::runtime_error("not yet implemented: int_vector"); }
         else if (arg["type"] == "int") { _tree->create<int>(arg_val_path); }
         else if (arg["type"] == "double") { _tree->create<double>(arg_val_path); }
