@@ -11,44 +11,83 @@
     <!--Note: AXI config bus uses 129 & 130-->
     <setreg>
       <name>FFT_RESET</name>
-      <address>131</address>
+      <address>129</address>
     </setreg>
     <setreg>
       <name>FFT_SIZE_LOG2</name>
+      <address>130</address>
+    </setreg>
+    <setreg>
+      <name>FFT_DIRECTION</name>
+      <address>131</address>
+    </setreg>
+    <setreg>
+      <name>FFT_SCALING</name>
       <address>132</address>
     </setreg>
     <setreg>
-      <name>MAGNITUDE_OUT</name>
+      <name>FFT_SHIFT_CONFIG</name>
       <address>133</address>
+    </setreg>
+    <setreg>
+      <name>MAGNITUDE_OUT</name>
+      <address>134</address>
     </setreg>
     <readback>
       <name>RB_FFT_RESET</name>
       <address>0</address>
     </readback>
     <readback>
-      <name>RB_MAGNITUDE_OUT</name>
+      <name>RB_FFT_SIZE_LOG2</name>
       <address>1</address>
+    </readback>
+    <readback>
+      <name>RB_FFT_DIRECTION</name>
+      <address>2</address>
+    </readback>
+    <readback>
+      <name>RB_FFT_SCALING</name>
+      <address>3</address>
+    </readback>
+    <readback>
+      <name>RB_FFT_SHIFT_CONFIG</name>
+      <address>4</address>
+    </readback>
+    <readback>
+      <name>RB_MAGNITUDE_OUT</name>
+      <address>5</address>
     </readback>
   </registers>
   <!-- Args -->
   <args>
     <arg>
-        <!--This controls only the fft shift part, so remember to also set the ctrl_word-->
       <name>spp</name>
       <type>int</type>
       <value>256</value>
       <check>GE($spp, 16) AND LE($spp, 4096) AND IS_PWR_OF_2($spp)</check>
       <check_message>FFT size must be in [16, 4096] and a power of two.</check_message>
-      <action>SR_WRITE("FFT_SIZE_LOG2", LOG2($spp)) AND SR_WRITE("AXIS_CONFIG_BUS", ADD(873472, LOG2($spp)))</action>
+      <action>SR_WRITE("FFT_SIZE_LOG2", LOG2($spp))</action>
     </arg>
     <arg>
-      <name>ctrl_word</name>
+      <name>direction</name>
+      <type>string</type>
+      <value>normal</value>
+      <check>EQUAL($direction, "normal") OR EQUAL($direction, "reverse") OR EQUAL($direction, "natural")</check>
+      <check_message>FFT direction must be either "normal", "reverse", or "natural".</check_message>
+      <action>
+          IF(EQUAL($magnitude_out, "normal"),  SR_WRITE("FFT_DIRECTION", 0)) OR
+          IF(EQUAL($magnitude_out, "reverse"), SR_WRITE("FFT_DIRECTION", 1)) OR
+          IF(EQUAL($magnitude_out, "natural"), SR_WRITE("FFT_DIRECTION", 2))
+      </action>
+    </arg>
+    <arg>
+      <name>scaling</name>
       <type>int</type>
-      <value>873472</value>
-      <!--<check>EQUAL($otype, "sc16")</check>-->
-      <!--<check_message>Output data type must be sc16.</check_message>-->
-      <!--TODO: Check against mag-out value (requires GET() function) -->
-      <action>SR_WRITE("AXIS_CONFIG_BUS", ADD($ctrl_word, LOG2($spp)))</action>
+      <!--scaling per radix-4 butterfly-->
+      <value>1706</value>
+      <check>GE($spp, 16) AND LE($spp, 4096) AND IS_PWR_OF_2($spp)</check>
+      <check_message>FFT size must be in [16, 4096] and a power of two.</check_message>
+      <action>SR_WRITE("FFT_SIZE_LOG2", LOG2($spp))</action>
     </arg>
     <arg>
       <name>otype</name>
