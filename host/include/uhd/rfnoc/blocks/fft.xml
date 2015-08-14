@@ -75,9 +75,9 @@
       <check>EQUAL($direction, "normal") OR EQUAL($direction, "reverse") OR EQUAL($direction, "natural")</check>
       <check_message>FFT direction must be either "normal", "reverse", or "natural".</check_message>
       <action>
-          IF(EQUAL($magnitude_out, "normal"),  SR_WRITE("FFT_DIRECTION", 0)) OR
-          IF(EQUAL($magnitude_out, "reverse"), SR_WRITE("FFT_DIRECTION", 1)) OR
-          IF(EQUAL($magnitude_out, "natural"), SR_WRITE("FFT_DIRECTION", 2))
+          IF(EQUAL($direction, "normal"),  SR_WRITE("FFT_DIRECTION", 0)) OR
+          IF(EQUAL($direction, "reverse"), SR_WRITE("FFT_DIRECTION", 1)) OR
+          IF(EQUAL($direction, "natural"), SR_WRITE("FFT_DIRECTION", 2))
       </action>
     </arg>
     <arg>
@@ -135,21 +135,4 @@
       <pkt_size>%vlen</pkt_size>
     </source>
   </ports>
-  <!--<components>-->
-    <!--<component>-->
-      <!--<key revision="1">nocshell</key>-->
-    <!--</component>-->
-    <!--<component srbase="0">-->
-      <!--[>Will look for a component with this key:<]-->
-      <!--<key revision="1">componentname</key>-->
-    <!--</component>-->
-  <!--</components>-->
-  <!--<connection>-->
-    <!--<source port="0">nocshell</source>-->
-    <!--<sink port="0">componentname</sink>-->
-  <!--</connection>-->
-  <!--<connection>-->
-    <!--<source port="0">componentname</source>-->
-    <!--<sink port="0">nocshell</sink>-->
-  <!--</connection>-->
 </nocblock>
