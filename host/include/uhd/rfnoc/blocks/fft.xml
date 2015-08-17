@@ -69,15 +69,26 @@
       <action>SR_WRITE("FFT_SIZE_LOG2", LOG2($spp))</action>
     </arg>
     <arg>
-      <name>direction</name>
+      <name>shift</name>
       <type>string</type>
       <value>normal</value>
-      <check>EQUAL($direction, "normal") OR EQUAL($direction, "reverse") OR EQUAL($direction, "natural")</check>
+      <check>EQUAL($shift, "normal") OR EQUAL($shift, "reverse") OR EQUAL($shift, "natural")</check>
       <check_message>FFT direction must be either "normal", "reverse", or "natural".</check_message>
       <action>
-          IF(EQUAL($direction, "normal"),  SR_WRITE("FFT_DIRECTION", 0)) OR
-          IF(EQUAL($direction, "reverse"), SR_WRITE("FFT_DIRECTION", 1)) OR
-          IF(EQUAL($direction, "natural"), SR_WRITE("FFT_DIRECTION", 2))
+          IF(EQUAL($shift, "normal"),  SR_WRITE("FFT_SHIFT_CONFIG", 0)) OR
+          IF(EQUAL($shift, "reverse"), SR_WRITE("FFT_SHIFT_CONFIG", 1)) OR
+          IF(EQUAL($shift, "natural"), SR_WRITE("FFT_SHIFT_CONFIG", 2))
+      </action>
+    </arg>
+    <arg>
+      <name>direction</name>
+      <type>string</type>
+      <value>forward</value>
+      <check>EQUAL($direction, "forward") OR EQUAL($direction, "reverse")</check>
+      <check_message>FFT direction must be either "forward" or "reverse".</check_message>
+      <action>
+          IF(EQUAL($direction, "forward"),  SR_WRITE("FFT_DIRECTION", 0)) OR
+          IF(EQUAL($direction, "reverse"), SR_WRITE("FFT_DIRECTION", 1))
       </action>
     </arg>
     <arg>
@@ -87,7 +98,7 @@
       <value>1706</value>
       <check>GE($spp, 16) AND LE($spp, 4096) AND IS_PWR_OF_2($spp)</check>
       <check_message>FFT size must be in [16, 4096] and a power of two.</check_message>
-      <action>SR_WRITE("FFT_SIZE_LOG2", LOG2($spp))</action>
+      <action>SR_WRITE("FFT_SCALING", $scaling)</action>
     </arg>
     <arg>
       <name>otype</name>
