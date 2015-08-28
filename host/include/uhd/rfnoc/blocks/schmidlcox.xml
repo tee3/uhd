@@ -28,6 +28,10 @@
       <name>THRESHOLD</name>
       <address>134</address>
     </setreg>
+    <setreg>
+      <name>AGC_REF_LEVEL</name>
+      <address>135</address>
+    </setreg>
   </registers>
   <!-- Args -->
   <args>
@@ -72,6 +76,14 @@
       <check>GE($max_num_symbols, 0) AND LE($max_num_symbols, 1000)</check>
       <check_message>Invalid number of max symbols.</check_message>
       <action>SR_WRITE("NUM_SYMBOLS_MAX", $max_num_symbols)</action>
+    </arg>
+    <arg>
+      <name>agc_ref_level</name>
+      <type>double</type>
+      <value>0.125</value>
+      <check>GE($agc_ref_level, 0.0) AND LE($agc_ref_level, 1.0)</check>
+      <check_message>AGC reference level must be in [0, 1].</check_message>
+      <action>SR_WRITE("AGC_REF_LEVEL", IROUND(MULT(32768.0, $agc_ref_level)))</action>
     </arg>
   </args>
   <ports>
