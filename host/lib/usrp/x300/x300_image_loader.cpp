@@ -34,7 +34,7 @@
 #include <uhd/utils/paths.hpp>
 #include <uhd/utils/static.hpp>
 
-#include "x300_impl.hpp"
+#include "usrp/x300/x300_impl.hpp"
 #include "x300_fw_common.h"
 #include "cdecode.h"
 

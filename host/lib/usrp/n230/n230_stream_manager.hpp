@@ -18,8 +18,8 @@
 #ifndef INCLUDED_N230_STREAM_MANAGER_HPP
 #define INCLUDED_N230_STREAM_MANAGER_HPP
 
-#include "time_core_3000.hpp"
-#include "rx_vita_core_3000.hpp"
+#include "usrp/cores/time_core_3000.hpp"
+#include "usrp/cores/rx_vita_core_3000.hpp"
 #include <uhd/types/sid.hpp>
 #include <uhd/types/device_addr.hpp>
 #include <uhd/types/metadata.hpp>
@@ -29,8 +29,8 @@
 #include <uhd/property_tree.hpp>
 #include <uhd/utils/tasks.hpp>
 #include <boost/smart_ptr.hpp>
-#include "n230_device_args.hpp"
-#include "n230_resource_manager.hpp"
+#include "usrp/n230/n230_device_args.hpp"
+#include "usrp/n230/n230_resource_manager.hpp"
 
 namespace uhd { namespace usrp { namespace n230 {
 

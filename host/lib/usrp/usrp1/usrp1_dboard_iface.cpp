@@ -15,9 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "usrp1_iface.hpp"
-#include "usrp1_impl.hpp"
-#include "codec_ctrl.hpp"
+#include "usrp/usrp1/usrp1_iface.hpp"
+#include "usrp/usrp1/usrp1_impl.hpp"
+#include "usrp/usrp1/usrp1_codec_ctrl.hpp"
 #include <uhd/usrp/dboard_iface.hpp>
 #include <uhd/types/dict.hpp>
 #include <uhd/utils/assert_has.hpp>

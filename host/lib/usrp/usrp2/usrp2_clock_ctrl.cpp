@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "clock_ctrl.hpp"
+#include "usrp2_clock_ctrl.hpp"
 #include "ad9510_regs.hpp"
 #include "usrp2_regs.hpp" //spi slave constants
 #include "usrp2_clk_regs.hpp"

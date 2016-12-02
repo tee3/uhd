@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "recv_packet_demuxer.hpp"
+#include "usrp/common/recv_packet_demuxer.hpp"
 #include <uhd/utils/msg.hpp>
 #include <uhd/utils/byteswap.hpp>
 #include <boost/thread/mutex.hpp>

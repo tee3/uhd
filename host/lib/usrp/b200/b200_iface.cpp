@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "b200_iface.hpp"
+#include "usrp/b200/b200_iface.hpp"
 
 #include "../../utils/ihex.hpp"
 #include <uhd/config.hpp>

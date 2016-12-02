@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "gpio_core_200.hpp"
+#include "usrp/cores/gpio_core_200.hpp"
 #include <uhd/types/dict.hpp>
 
 #define REG_GPIO_IDLE          _base + 0

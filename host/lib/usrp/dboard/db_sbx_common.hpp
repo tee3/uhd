@@ -16,7 +16,7 @@
 //
 
 #include <uhd/types/device_addr.hpp>
-#include "adf435x.hpp"
+#include "usrp/common/adf435x.hpp"
 #include "max287x.hpp"
 
 // LO Related

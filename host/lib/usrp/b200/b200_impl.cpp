@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "b200_impl.hpp"
-#include "b200_regs.hpp"
+#include "usrp/b200/b200_impl.hpp"
+#include "usrp/b200/b200_regs.hpp"
 #include <uhd/config.hpp>
 #include <uhd/transport/usb_control.hpp>
 #include <uhd/utils/msg.hpp>
@@ -38,7 +38,7 @@
 #include <ctime>
 #include <cmath>
 
-#include "../../transport/libusb1_base.hpp"
+#include "transport/libusb1_base.hpp"
 
 using namespace uhd;
 using namespace uhd::usrp;

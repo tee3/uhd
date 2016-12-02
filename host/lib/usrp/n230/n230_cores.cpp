@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "n230_cores.hpp"
+#include "usrp/n230/n230_cores.hpp"
 #include "n230_fpga_defs.h"
 #include "n230_fw_defs.h"
 

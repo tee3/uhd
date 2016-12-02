@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "n230_impl.hpp"
+#include "usrp/n230/n230_impl.hpp"
 
-#include "usrp3_fw_ctrl_iface.hpp"
-#include "validate_subdev_spec.hpp"
+#include "usrp/common/usrp3_fw_ctrl_iface.hpp"
+#include "usrp/common/validate_subdev_spec.hpp"
 #include <uhd/utils/static.hpp>
 #include <uhd/transport/if_addrs.hpp>
 #include <uhd/transport/udp_zero_copy.hpp>

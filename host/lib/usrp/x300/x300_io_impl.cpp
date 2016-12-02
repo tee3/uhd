@@ -15,12 +15,12 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "x300_regs.hpp"
-#include "x300_impl.hpp"
-#include "../../transport/super_recv_packet_handler.hpp"
-#include "../../transport/super_send_packet_handler.hpp"
+#include "usrp/x300/x300_regs.hpp"
+#include "usrp/x300/x300_impl.hpp"
+#include "transport/super_recv_packet_handler.hpp"
+#include "transport/super_send_packet_handler.hpp"
 #include <uhd/transport/nirio_zero_copy.hpp>
-#include "async_packet_handler.hpp"
+#include "usrp/common/async_packet_handler.hpp"
 #include <uhd/transport/bounded_buffer.hpp>
 #include <boost/bind.hpp>
 #include <uhd/utils/tasks.hpp>

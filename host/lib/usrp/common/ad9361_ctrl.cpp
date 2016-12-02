@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "ad9361_ctrl.hpp"
+#include "usrp/common/ad9361_ctrl.hpp"
 #include <uhd/types/ranges.hpp>
 #include <uhd/utils/msg.hpp>
 #include <uhd/types/serial.hpp>

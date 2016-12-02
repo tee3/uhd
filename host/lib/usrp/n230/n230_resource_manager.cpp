@@ -15,9 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "n230_resource_manager.hpp"
+#include "usrp/n230/n230_resource_manager.hpp"
 
-#include "usrp3_fw_ctrl_iface.hpp"
+#include "usrp/common/usrp3_fw_ctrl_iface.hpp"
 #include <uhd/transport/if_addrs.hpp>
 #include <uhd/transport/udp_zero_copy.hpp>
 #include <uhd/utils/byteswap.hpp>

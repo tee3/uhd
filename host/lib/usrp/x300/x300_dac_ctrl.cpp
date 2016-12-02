@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "x300_dac_ctrl.hpp"
-#include "x300_regs.hpp"
+#include "usrp/x300/x300_dac_ctrl.hpp"
+#include "usrp/x300/x300_regs.hpp"
 #include <uhd/types/time_spec.hpp>
 #include <uhd/utils/msg.hpp>
 #include <uhd/utils/log.hpp>

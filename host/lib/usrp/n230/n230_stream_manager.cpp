@@ -15,11 +15,11 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "n230_stream_manager.hpp"
+#include "usrp/n230/n230_stream_manager.hpp"
 
-#include "../../transport/super_recv_packet_handler.hpp"
-#include "../../transport/super_send_packet_handler.hpp"
-#include "async_packet_handler.hpp"
+#include "transport/super_recv_packet_handler.hpp"
+#include "transport/super_send_packet_handler.hpp"
+#include "usrp/common/async_packet_handler.hpp"
 #include <uhd/transport/bounded_buffer.hpp>
 #include <boost/bind.hpp>
 #include <uhd/utils/tasks.hpp>

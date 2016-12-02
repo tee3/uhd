@@ -18,7 +18,7 @@
 #ifndef INCLUDED_USRP1_IFACE_HPP
 #define INCLUDED_USRP1_IFACE_HPP
 
-#include "fx2_ctrl.hpp"
+#include "usrp/common/fx2_ctrl.hpp"
 #include <uhd/types/wb_iface.hpp>
 #include <uhd/types/serial.hpp>
 #include <boost/shared_ptr.hpp>

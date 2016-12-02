@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "codec_ctrl.hpp"
+#include "e100_codec_ctrl.hpp"
 #include "ad9862_regs.hpp"
 #include <uhd/utils/log.hpp>
 #include <uhd/types/dict.hpp>

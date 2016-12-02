@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "usrp1_iface.hpp"
+#include "usrp/usrp1/usrp1_iface.hpp"
 #include <uhd/utils/log.hpp>
 #include <uhd/exception.hpp>
 #include <uhd/utils/byteswap.hpp>

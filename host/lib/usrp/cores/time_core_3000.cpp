@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "time_core_3000.hpp"
+#include "usrp/cores/time_core_3000.hpp"
 #include <uhd/utils/safe_call.hpp>
 #include <uhd/utils/msg.hpp>
 #include <boost/thread/thread.hpp>

@@ -18,8 +18,8 @@
 #ifndef INCLUDED_B200_CORES_HPP
 #define INCLUDED_B200_CORES_HPP
 
-#include "spi_core_3000.hpp"
-#include "adf4001_ctrl.hpp"
+#include "usrp/cores/spi_core_3000.hpp"
+#include "usrp/common/adf4001_ctrl.hpp"
 #include <boost/thread/mutex.hpp>
 
 class b200_local_spi_core : boost::noncopyable, public uhd::spi_iface {

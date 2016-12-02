@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "graph_impl.hpp"
+#include "rfnoc/graph_impl.hpp"
 #include <uhd/rfnoc/source_block_ctrl_base.hpp>
 #include <uhd/rfnoc/sink_block_ctrl_base.hpp>
 #include <uhd/utils/msg.hpp>

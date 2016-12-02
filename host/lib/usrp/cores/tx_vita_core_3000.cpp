@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "tx_vita_core_3000.hpp"
+#include "usrp/cores/tx_vita_core_3000.hpp"
 #include <uhd/utils/safe_call.hpp>
 
 #define REG_CTRL_ERROR_POLICY       (_base + 0)

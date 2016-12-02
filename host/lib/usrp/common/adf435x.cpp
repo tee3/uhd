@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "adf435x.hpp"
+#include "usrp/common/adf435x.hpp"
 
 using namespace uhd;
 

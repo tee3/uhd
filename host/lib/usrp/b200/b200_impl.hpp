@@ -18,19 +18,19 @@
 #ifndef INCLUDED_B200_IMPL_HPP
 #define INCLUDED_B200_IMPL_HPP
 
-#include "b200_iface.hpp"
-#include "b200_uart.hpp"
-#include "b200_cores.hpp"
-#include "ad9361_ctrl.hpp"
-#include "ad936x_manager.hpp"
-#include "adf4001_ctrl.hpp"
-#include "rx_vita_core_3000.hpp"
-#include "tx_vita_core_3000.hpp"
-#include "time_core_3000.hpp"
-#include "gpio_atr_3000.hpp"
-#include "radio_ctrl_core_3000.hpp"
-#include "rx_dsp_core_3000.hpp"
-#include "tx_dsp_core_3000.hpp"
+#include "usrp/b200/b200_iface.hpp"
+#include "usrp/b200/b200_uart.hpp"
+#include "usrp/b200/b200_cores.hpp"
+#include "usrp/common/ad9361_ctrl.hpp"
+#include "usrp/common/ad936x_manager.hpp"
+#include "usrp/common/adf4001_ctrl.hpp"
+#include "usrp/cores/rx_vita_core_3000.hpp"
+#include "usrp/cores/tx_vita_core_3000.hpp"
+#include "usrp/cores/time_core_3000.hpp"
+#include "usrp/cores/gpio_atr_3000.hpp"
+#include "usrp/cores/radio_ctrl_core_3000.hpp"
+#include "usrp/cores/rx_dsp_core_3000.hpp"
+#include "usrp/cores/tx_dsp_core_3000.hpp"
 #include <uhd/device.hpp>
 #include <uhd/property_tree.hpp>
 #include <uhd/utils/pimpl.hpp>
@@ -46,7 +46,7 @@
 #include <uhd/transport/bounded_buffer.hpp>
 #include <boost/assign.hpp>
 #include <boost/weak_ptr.hpp>
-#include "recv_packet_demuxer_3000.hpp"
+#include "usrp/common/recv_packet_demuxer_3000.hpp"
 static const boost::uint8_t  B200_FW_COMPAT_NUM_MAJOR = 8;
 static const boost::uint8_t  B200_FW_COMPAT_NUM_MINOR = 0;
 static const boost::uint16_t B200_FPGA_COMPAT_NUM = 14;

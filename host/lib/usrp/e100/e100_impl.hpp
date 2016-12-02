@@ -16,17 +16,17 @@
 //
 
 #include "e100_ctrl.hpp"
-#include "clock_ctrl.hpp"
-#include "codec_ctrl.hpp"
-#include "i2c_core_200.hpp"
-#include "rx_frontend_core_200.hpp"
-#include "tx_frontend_core_200.hpp"
-#include "rx_dsp_core_200.hpp"
-#include "tx_dsp_core_200.hpp"
-#include "time64_core_200.hpp"
-#include "fifo_ctrl_excelsior.hpp"
-#include "user_settings_core_200.hpp"
-#include "recv_packet_demuxer.hpp"
+#include "e100_clock_ctrl.hpp"
+#include "e100_codec_ctrl.hpp"
+#include "usrp/cores/i2c_core_200.hpp"
+#include "usrp/cores/rx_frontend_core_200.hpp"
+#include "usrp/cores/tx_frontend_core_200.hpp"
+#include "usrp/cores/rx_dsp_core_200.hpp"
+#include "usrp/cores/tx_dsp_core_200.hpp"
+#include "usrp/cores/time64_core_200.hpp"
+#include "usrp/common/fifo_ctrl_excelsior.hpp"
+#include "usrp/cores/user_settings_core_200.hpp"
+#include "usrp/common/recv_packet_demuxer.hpp"
 #include <uhd/device.hpp>
 #include <uhd/property_tree.hpp>
 #include <uhd/types/device_addr.hpp>

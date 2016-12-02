@@ -22,11 +22,11 @@
 #include <uhd/device.hpp>
 #include <uhd/usrp/subdev_spec.hpp>
 
-#include "n230_device_args.hpp"
-#include "n230_eeprom_manager.hpp"
-#include "n230_resource_manager.hpp"
-#include "n230_stream_manager.hpp"
-#include "recv_packet_demuxer_3000.hpp"
+#include "usrp/n230/n230_device_args.hpp"
+#include "usrp/n230/n230_eeprom_manager.hpp"
+#include "usrp/n230/n230_resource_manager.hpp"
+#include "usrp/n230/n230_stream_manager.hpp"
+#include "usrp/common/recv_packet_demuxer_3000.hpp"
 
 namespace uhd { namespace usrp { namespace n230 {
 

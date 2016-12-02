@@ -25,7 +25,7 @@
 #include <boost/assign/list_of.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
-#include "ad9361_ctrl.hpp"
+#include "usrp/common/ad9361_ctrl.hpp"
 
 enum b200_product_t {
     B200,

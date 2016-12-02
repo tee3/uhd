@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "n230_clk_pps_ctrl.hpp"
+#include "usrp/n230/n230_clk_pps_ctrl.hpp"
 
 #include <uhd/utils/msg.hpp>
 #include <uhd/utils/safe_call.hpp>

@@ -15,9 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "x300_impl.hpp"
+#include "usrp/x300/x300_impl.hpp"
 #include <uhd/types/wb_iface.hpp>
-#include "x300_regs.hpp"
+#include "usrp/x300/x300_regs.hpp"
 #include <uhd/utils/msg.hpp>
 #include <uhd/types/serial.hpp>
 #include <uhd/exception.hpp>

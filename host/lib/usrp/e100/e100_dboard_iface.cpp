@@ -1,5 +1,5 @@
 //
-// Copyright 2011,2015,2016 Ettus Research LLC
+// Copyright 2010-2011,2015,2016 Ettus Research LLC
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,30 +15,30 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "gpio_core_200.hpp"
+#include "usrp/cores/gpio_core_200.hpp"
 #include <uhd/types/serial.hpp>
-#include "b100_regs.hpp"
-#include "clock_ctrl.hpp"
-#include "codec_ctrl.hpp"
+#include "e100_regs.hpp"
+#include "e100_clock_ctrl.hpp"
+#include "e100_codec_ctrl.hpp"
 #include <uhd/usrp/dboard_iface.hpp>
 #include <uhd/types/dict.hpp>
 #include <uhd/exception.hpp>
 #include <boost/assign/list_of.hpp>
-
+#include <linux/usrp_e.h> //i2c and spi constants
 
 using namespace uhd;
 using namespace uhd::usrp;
 using namespace boost::assign;
 
-class b100_dboard_iface : public dboard_iface{
+class e100_dboard_iface : public dboard_iface{
 public:
 
-    b100_dboard_iface(
+    e100_dboard_iface(
         timed_wb_iface::sptr wb_iface,
         i2c_iface::sptr i2c_iface,
         spi_iface::sptr spi_iface,
-        b100_clock_ctrl::sptr clock,
-        b100_codec_ctrl::sptr codec
+        e100_clock_ctrl::sptr clock,
+        e100_codec_ctrl::sptr codec
     ){
         _wb_iface = wb_iface;
         _i2c_iface = i2c_iface;
@@ -52,7 +52,7 @@ public:
         this->set_clock_rate(UNIT_TX, _clock->get_fpga_clock_rate());
     }
 
-    ~b100_dboard_iface(void){
+    ~e100_dboard_iface(void){
         /* NOP */
     }
 
@@ -107,28 +107,28 @@ private:
     timed_wb_iface::sptr _wb_iface;
     i2c_iface::sptr _i2c_iface;
     spi_iface::sptr _spi_iface;
-    b100_clock_ctrl::sptr _clock;
-    b100_codec_ctrl::sptr _codec;
+    e100_clock_ctrl::sptr _clock;
+    e100_codec_ctrl::sptr _codec;
     gpio_core_200::sptr _gpio;
 };
 
 /***********************************************************************
  * Make Function
  **********************************************************************/
-dboard_iface::sptr make_b100_dboard_iface(
+dboard_iface::sptr make_e100_dboard_iface(
     timed_wb_iface::sptr wb_iface,
     i2c_iface::sptr i2c_iface,
     spi_iface::sptr spi_iface,
-    b100_clock_ctrl::sptr clock,
-    b100_codec_ctrl::sptr codec
+    e100_clock_ctrl::sptr clock,
+    e100_codec_ctrl::sptr codec
 ){
-    return dboard_iface::sptr(new b100_dboard_iface(wb_iface, i2c_iface, spi_iface, clock, codec));
+    return dboard_iface::sptr(new e100_dboard_iface(wb_iface, i2c_iface, spi_iface, clock, codec));
 }
 
 /***********************************************************************
  * Clock Rates
  **********************************************************************/
-void b100_dboard_iface::set_clock_rate(unit_t unit, double rate){
+void e100_dboard_iface::set_clock_rate(unit_t unit, double rate){
     switch(unit){
     case UNIT_RX: return _clock->set_rx_dboard_clock_rate(rate);
     case UNIT_TX: return _clock->set_tx_dboard_clock_rate(rate);
@@ -136,7 +136,7 @@ void b100_dboard_iface::set_clock_rate(unit_t unit, double rate){
     }
 }
 
-std::vector<double> b100_dboard_iface::get_clock_rates(unit_t unit){
+std::vector<double> e100_dboard_iface::get_clock_rates(unit_t unit){
     switch(unit){
     case UNIT_RX: return _clock->get_rx_dboard_clock_rates();
     case UNIT_TX: return _clock->get_tx_dboard_clock_rates();
@@ -144,7 +144,7 @@ std::vector<double> b100_dboard_iface::get_clock_rates(unit_t unit){
     }
 }
 
-double b100_dboard_iface::get_clock_rate(unit_t unit){
+double e100_dboard_iface::get_clock_rate(unit_t unit){
     switch(unit){
     case UNIT_RX: return _clock->get_rx_clock_rate();
     case UNIT_TX: return _clock->get_tx_clock_rate();
@@ -152,7 +152,7 @@ double b100_dboard_iface::get_clock_rate(unit_t unit){
     }
 }
 
-void b100_dboard_iface::set_clock_enabled(unit_t unit, bool enb){
+void e100_dboard_iface::set_clock_enabled(unit_t unit, bool enb){
     switch(unit){
     case UNIT_RX: return _clock->enable_rx_dboard_clock(enb);
     case UNIT_TX: return _clock->enable_tx_dboard_clock(enb);
@@ -160,46 +160,46 @@ void b100_dboard_iface::set_clock_enabled(unit_t unit, bool enb){
     }
 }
 
-double b100_dboard_iface::get_codec_rate(unit_t){
+double e100_dboard_iface::get_codec_rate(unit_t){
     return _clock->get_fpga_clock_rate();
 }
 
 /***********************************************************************
  * GPIO
  **********************************************************************/
-void b100_dboard_iface::set_pin_ctrl(unit_t unit, boost::uint32_t value, boost::uint32_t mask){
+void e100_dboard_iface::set_pin_ctrl(unit_t unit, boost::uint32_t value, boost::uint32_t mask){
     _gpio->set_pin_ctrl(unit, static_cast<boost::uint16_t>(value), static_cast<boost::uint16_t>(mask));
 }
 
-boost::uint32_t b100_dboard_iface::get_pin_ctrl(unit_t unit){
+boost::uint32_t e100_dboard_iface::get_pin_ctrl(unit_t unit){
     return static_cast<boost::uint32_t>(_gpio->get_pin_ctrl(unit));
 }
 
-void b100_dboard_iface::set_atr_reg(unit_t unit, atr_reg_t reg, boost::uint32_t value, boost::uint32_t mask){
+void e100_dboard_iface::set_atr_reg(unit_t unit, atr_reg_t reg, boost::uint32_t value, boost::uint32_t mask){
     _gpio->set_atr_reg(unit, reg, static_cast<boost::uint16_t>(value), static_cast<boost::uint16_t>(mask));
 }
 
-boost::uint32_t b100_dboard_iface::get_atr_reg(unit_t unit, atr_reg_t reg){
+boost::uint32_t e100_dboard_iface::get_atr_reg(unit_t unit, atr_reg_t reg){
     return static_cast<boost::uint32_t>(_gpio->get_atr_reg(unit, reg));
 }
 
-void b100_dboard_iface::set_gpio_ddr(unit_t unit, boost::uint32_t value, boost::uint32_t mask){
+void e100_dboard_iface::set_gpio_ddr(unit_t unit, boost::uint32_t value, boost::uint32_t mask){
     _gpio->set_gpio_ddr(unit, static_cast<boost::uint16_t>(value), static_cast<boost::uint16_t>(mask));
 }
 
-boost::uint32_t b100_dboard_iface::get_gpio_ddr(unit_t unit){
+boost::uint32_t e100_dboard_iface::get_gpio_ddr(unit_t unit){
     return static_cast<boost::uint32_t>(_gpio->get_gpio_ddr(unit));
 }
 
-void b100_dboard_iface::set_gpio_out(unit_t unit, boost::uint32_t value, boost::uint32_t mask){
+void e100_dboard_iface::set_gpio_out(unit_t unit, boost::uint32_t value, boost::uint32_t mask){
     _gpio->set_gpio_out(unit, static_cast<boost::uint16_t>(value), static_cast<boost::uint16_t>(mask));
 }
 
-boost::uint32_t b100_dboard_iface::get_gpio_out(unit_t unit){
+boost::uint32_t e100_dboard_iface::get_gpio_out(unit_t unit){
     return static_cast<boost::uint32_t>(_gpio->get_gpio_out(unit));
 }
 
-boost::uint32_t b100_dboard_iface::read_gpio(unit_t unit){
+boost::uint32_t e100_dboard_iface::read_gpio(unit_t unit){
     return _gpio->read_gpio(unit);
 }
 
@@ -213,13 +213,13 @@ boost::uint32_t b100_dboard_iface::read_gpio(unit_t unit){
  */
 static boost::uint32_t unit_to_otw_spi_dev(dboard_iface::unit_t unit){
     switch(unit){
-    case dboard_iface::UNIT_TX: return B100_SPI_SS_TX_DB;
-    case dboard_iface::UNIT_RX: return B100_SPI_SS_RX_DB;
+    case dboard_iface::UNIT_TX: return UE_SPI_SS_TX_DB;
+    case dboard_iface::UNIT_RX: return UE_SPI_SS_RX_DB;
     default: UHD_THROW_INVALID_CODE_PATH();
     }
 }
 
-void b100_dboard_iface::write_spi(
+void e100_dboard_iface::write_spi(
     unit_t unit,
     const spi_config_t &config,
     boost::uint32_t data,
@@ -228,7 +228,7 @@ void b100_dboard_iface::write_spi(
     _spi_iface->write_spi(unit_to_otw_spi_dev(unit), config, data, num_bits);
 }
 
-boost::uint32_t b100_dboard_iface::read_write_spi(
+boost::uint32_t e100_dboard_iface::read_write_spi(
     unit_t unit,
     const spi_config_t &config,
     boost::uint32_t data,
@@ -240,55 +240,55 @@ boost::uint32_t b100_dboard_iface::read_write_spi(
 /***********************************************************************
  * I2C
  **********************************************************************/
-void b100_dboard_iface::write_i2c(boost::uint16_t addr, const byte_vector_t &bytes){
+void e100_dboard_iface::write_i2c(boost::uint16_t addr, const byte_vector_t &bytes){
     return _i2c_iface->write_i2c(addr, bytes);
 }
 
-byte_vector_t b100_dboard_iface::read_i2c(boost::uint16_t addr, size_t num_bytes){
+byte_vector_t e100_dboard_iface::read_i2c(boost::uint16_t addr, size_t num_bytes){
     return _i2c_iface->read_i2c(addr, num_bytes);
 }
 
 /***********************************************************************
  * Aux DAX/ADC
  **********************************************************************/
-void b100_dboard_iface::write_aux_dac(dboard_iface::unit_t, aux_dac_t which, double value){
+void e100_dboard_iface::write_aux_dac(dboard_iface::unit_t, aux_dac_t which, double value){
     //same aux dacs for each unit
-    static const uhd::dict<aux_dac_t, b100_codec_ctrl::aux_dac_t> which_to_aux_dac = map_list_of
-        (AUX_DAC_A, b100_codec_ctrl::AUX_DAC_A)
-        (AUX_DAC_B, b100_codec_ctrl::AUX_DAC_B)
-        (AUX_DAC_C, b100_codec_ctrl::AUX_DAC_C)
-        (AUX_DAC_D, b100_codec_ctrl::AUX_DAC_D)
+    static const uhd::dict<aux_dac_t, e100_codec_ctrl::aux_dac_t> which_to_aux_dac = map_list_of
+        (AUX_DAC_A, e100_codec_ctrl::AUX_DAC_A)
+        (AUX_DAC_B, e100_codec_ctrl::AUX_DAC_B)
+        (AUX_DAC_C, e100_codec_ctrl::AUX_DAC_C)
+        (AUX_DAC_D, e100_codec_ctrl::AUX_DAC_D)
     ;
     _codec->write_aux_dac(which_to_aux_dac[which], value);
 }
 
-double b100_dboard_iface::read_aux_adc(dboard_iface::unit_t unit, aux_adc_t which){
+double e100_dboard_iface::read_aux_adc(dboard_iface::unit_t unit, aux_adc_t which){
     static const uhd::dict<
-        unit_t, uhd::dict<aux_adc_t, b100_codec_ctrl::aux_adc_t>
+        unit_t, uhd::dict<aux_adc_t, e100_codec_ctrl::aux_adc_t>
     > unit_to_which_to_aux_adc = map_list_of
         (UNIT_RX, map_list_of
-            (AUX_ADC_A, b100_codec_ctrl::AUX_ADC_A1)
-            (AUX_ADC_B, b100_codec_ctrl::AUX_ADC_B1)
+            (AUX_ADC_A, e100_codec_ctrl::AUX_ADC_A1)
+            (AUX_ADC_B, e100_codec_ctrl::AUX_ADC_B1)
         )
         (UNIT_TX, map_list_of
-            (AUX_ADC_A, b100_codec_ctrl::AUX_ADC_A2)
-            (AUX_ADC_B, b100_codec_ctrl::AUX_ADC_B2)
+            (AUX_ADC_A, e100_codec_ctrl::AUX_ADC_A2)
+            (AUX_ADC_B, e100_codec_ctrl::AUX_ADC_B2)
         )
     ;
     return _codec->read_aux_adc(unit_to_which_to_aux_adc[unit][which]);
 }
 
-void b100_dboard_iface::set_command_time(const uhd::time_spec_t& t)
-{
-    _wb_iface->set_time(t);
-}
-
-uhd::time_spec_t b100_dboard_iface::get_command_time(void)
+uhd::time_spec_t e100_dboard_iface::get_command_time()
 {
     return _wb_iface->get_time();
 }
 
-void b100_dboard_iface::set_fe_connection(unit_t, const std::string&, const fe_connection_t&)
+void e100_dboard_iface::set_command_time(const uhd::time_spec_t& t)
+{
+    _wb_iface->set_time(t);
+}
+
+void e100_dboard_iface::set_fe_connection(unit_t, const std::string&, const fe_connection_t&)
 {
     throw uhd::not_implemented_error("fe connection configuration support not implemented");
 }

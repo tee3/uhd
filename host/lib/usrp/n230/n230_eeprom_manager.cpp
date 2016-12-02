@@ -22,7 +22,7 @@
 #include <uhd/types/mac_addr.hpp>
 #include <boost/format.hpp>
 #include <boost/asio.hpp> //used for htonl and ntohl
-#include "n230_eeprom_manager.hpp"
+#include "usrp/n230/n230_eeprom_manager.hpp"
 
 namespace uhd { namespace usrp { namespace n230 {
 

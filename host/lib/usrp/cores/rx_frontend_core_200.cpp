@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "rx_frontend_core_200.hpp"
+#include "usrp/cores/rx_frontend_core_200.hpp"
 #include <boost/math/special_functions/round.hpp>
 #include <boost/bind.hpp>
 

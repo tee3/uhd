@@ -18,7 +18,7 @@
 #include "twinrx/twinrx_experts.hpp"
 #include "twinrx/twinrx_ctrl.hpp"
 #include "twinrx/twinrx_io.hpp"
-#include <expert_factory.hpp>
+#include "experts/expert_factory.hpp"
 #include <uhd/types/device_addr.hpp>
 #include <uhd/types/ranges.hpp>
 #include <uhd/types/sensors.hpp>
@@ -26,7 +26,7 @@
 #include <uhd/usrp/dboard_manager.hpp>
 #include <uhd/utils/log.hpp>
 #include <uhd/utils/static.hpp>
-#include "dboard_ctor_args.hpp"
+#include "usrp/dboard_ctor_args.hpp"
 #include <boost/assign/list_of.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/thread.hpp>

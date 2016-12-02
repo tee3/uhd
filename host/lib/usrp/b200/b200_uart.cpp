@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "b200_uart.hpp"
-#include "b200_impl.hpp"
+#include "usrp/b200/b200_uart.hpp"
+#include "usrp/b200/b200_impl.hpp"
 #include <uhd/transport/bounded_buffer.hpp>
 #include <uhd/transport/vrt_if_packet.hpp>
 #include <uhd/utils/byteswap.hpp>

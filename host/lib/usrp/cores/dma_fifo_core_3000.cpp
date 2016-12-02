@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "dma_fifo_core_3000.hpp"
+#include "usrp/cores/dma_fifo_core_3000.hpp"
 #include <uhd/exception.hpp>
 #include <boost/thread/thread.hpp> //sleep
 #include <uhd/utils/soft_register.hpp>

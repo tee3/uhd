@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "dsp_core_utils.hpp"
+#include "usrp/cores/dsp_core_utils.hpp"
 #include <uhd/utils/math.hpp>
 #include <uhd/exception.hpp>
 #include <boost/math/special_functions/round.hpp>

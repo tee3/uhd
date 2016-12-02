@@ -15,7 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "x300_impl.hpp"
+#include "usrp/x300/x300_impl.hpp"
+#include "rfnoc/radio_ctrl_impl.hpp"
 #include <boost/date_time/posix_time/posix_time_io.hpp>
 
 using namespace uhd::usrp::x300;

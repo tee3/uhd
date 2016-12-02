@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "usrp3_fw_ctrl_iface.hpp"
+#include "usrp/common/usrp3_fw_ctrl_iface.hpp"
 
 #include <uhd/utils/byteswap.hpp>
 #include <uhd/utils/msg.hpp>

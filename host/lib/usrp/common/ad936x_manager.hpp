@@ -23,7 +23,7 @@
 #include <uhd/property_tree.hpp>
 #include <uhd/types/direction.hpp>
 #include <boost/shared_ptr.hpp>
-#include "ad9361_ctrl.hpp"
+#include "usrp/common/ad9361_ctrl.hpp"
 #include <stdint.h>
 
 namespace uhd { namespace usrp {

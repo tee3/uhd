@@ -25,8 +25,8 @@
 #include <uhd/utils/log.hpp>
 #include <uhd/utils/msg.hpp>
 #include "../common/async_packet_handler.hpp"
-#include "../../transport/super_recv_packet_handler.hpp"
-#include "../../transport/super_send_packet_handler.hpp"
+#include "transport/super_recv_packet_handler.hpp"
+#include "transport/super_send_packet_handler.hpp"
 #include "../../rfnoc/rx_stream_terminator.hpp"
 #include "../../rfnoc/tx_stream_terminator.hpp"
 #include <uhd/rfnoc/rate_node_ctrl.hpp>

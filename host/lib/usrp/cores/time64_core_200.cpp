@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "time64_core_200.hpp"
+#include "usrp/cores/time64_core_200.hpp"
 #include <uhd/exception.hpp>
 #include <uhd/utils/assert_has.hpp>
 #include <boost/math/special_functions/round.hpp>

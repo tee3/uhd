@@ -18,17 +18,17 @@
 #ifndef INCLUDED_N230_RESOURCE_MANAGER_HPP
 #define INCLUDED_N230_RESOURCE_MANAGER_HPP
 
-#include "radio_ctrl_core_3000.hpp"
-#include "spi_core_3000.hpp"
-#include "gpio_atr_3000.hpp"
-#include "rx_vita_core_3000.hpp"
-#include "tx_vita_core_3000.hpp"
-#include "time_core_3000.hpp"
-#include "rx_dsp_core_3000.hpp"
-#include "tx_dsp_core_3000.hpp"
-#include "user_settings_core_3000.hpp"
-#include "ad9361_ctrl.hpp"
-#include "ad936x_manager.hpp"
+#include "usrp/cores/radio_ctrl_core_3000.hpp"
+#include "usrp/cores/spi_core_3000.hpp"
+#include "usrp/cores/gpio_atr_3000.hpp"
+#include "usrp/cores/rx_vita_core_3000.hpp"
+#include "usrp/cores/tx_vita_core_3000.hpp"
+#include "usrp/cores/time_core_3000.hpp"
+#include "usrp/cores/rx_dsp_core_3000.hpp"
+#include "usrp/cores/tx_dsp_core_3000.hpp"
+#include "usrp/cores/user_settings_core_3000.hpp"
+#include "usrp/common/ad9361_ctrl.hpp"
+#include "usrp/common/ad936x_manager.hpp"
 #include <uhd/utils/tasks.hpp>
 #include <uhd/types/sid.hpp>
 #include <uhd/types/device_addr.hpp>
@@ -37,12 +37,12 @@
 #include <uhd/transport/bounded_buffer.hpp>
 #include <uhd/usrp/gps_ctrl.hpp>
 
-#include "usrp3_fw_ctrl_iface.hpp"
-#include "n230_clk_pps_ctrl.hpp"
-#include "n230_cores.hpp"
+#include "usrp/common/usrp3_fw_ctrl_iface.hpp"
+#include "usrp/n230/n230_clk_pps_ctrl.hpp"
+#include "usrp/n230/n230_cores.hpp"
 #include "n230_fpga_defs.h"
-#include "n230_frontend_ctrl.hpp"
-#include "n230_uart.hpp"
+#include "usrp/n230/n230_frontend_ctrl.hpp"
+#include "usrp/n230/n230_uart.hpp"
 
 namespace uhd { namespace usrp { namespace n230 {
 

@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "x300_adc_ctrl.hpp"
+#include "usrp/x300/x300_adc_ctrl.hpp"
 #include "ads62p48_regs.hpp"
 #include <uhd/types/ranges.hpp>
 #include <uhd/utils/log.hpp>

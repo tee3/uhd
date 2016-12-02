@@ -18,17 +18,17 @@
 #ifndef INCLUDED_USRP2_IMPL_HPP
 #define INCLUDED_USRP2_IMPL_HPP
 
-#include "gpio_core_200.hpp"
+#include "usrp/cores/gpio_core_200.hpp"
 #include "usrp2_iface.hpp"
 #include "usrp2_fifo_ctrl.hpp"
-#include "clock_ctrl.hpp"
-#include "codec_ctrl.hpp"
-#include "rx_frontend_core_200.hpp"
-#include "tx_frontend_core_200.hpp"
-#include "rx_dsp_core_200.hpp"
-#include "tx_dsp_core_200.hpp"
-#include "time64_core_200.hpp"
-#include "user_settings_core_200.hpp"
+#include "usrp2_clock_ctrl.hpp"
+#include "usrp2_codec_ctrl.hpp"
+#include "usrp/cores/rx_frontend_core_200.hpp"
+#include "usrp/cores/tx_frontend_core_200.hpp"
+#include "usrp/cores/rx_dsp_core_200.hpp"
+#include "usrp/cores/tx_dsp_core_200.hpp"
+#include "usrp/cores/time64_core_200.hpp"
+#include "usrp/cores/user_settings_core_200.hpp"
 #include <uhd/property_tree.hpp>
 #include <uhd/usrp/gps_ctrl.hpp>
 #include <uhd/device.hpp>

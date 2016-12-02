@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "ad936x_manager.hpp"
+#include "usrp/common/ad936x_manager.hpp"
 #include <uhd/utils/msg.hpp>
 #include <boost/foreach.hpp>
 #include <boost/functional/hash.hpp>

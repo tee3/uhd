@@ -25,7 +25,7 @@
 #include <boost/thread/mutex.hpp>
 #include <uhd/transport/nirio/status.h>
 #include <uhd/transport/nirio/niriok_proxy.h>
-#include "x300_regs.hpp"
+#include "usrp/x300/x300_regs.hpp"
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/thread/thread.hpp>
 

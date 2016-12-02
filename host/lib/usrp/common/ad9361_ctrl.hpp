@@ -24,7 +24,7 @@
 #include <uhd/types/sensors.hpp>
 #include <uhd/exception.hpp>
 #include <boost/shared_ptr.hpp>
-#include <ad9361_device.h>
+#include "usrp/common/ad9361_driver/ad9361_device.h"
 #include <string>
 #include <complex>
 #include <uhd/types/filters.hpp>

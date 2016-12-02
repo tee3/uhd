@@ -26,8 +26,8 @@
 #include <uhd/utils/paths.hpp>
 #include <uhd/utils/static.hpp>
 
-#include "b200_iface.hpp"
-#include "b200_impl.hpp"
+#include "usrp/b200/b200_iface.hpp"
+#include "usrp/b200/b200_impl.hpp"
 
 using namespace uhd;
 using namespace uhd::usrp;

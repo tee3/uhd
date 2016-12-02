@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "spi_core_100.hpp"
+#include "usrp/cores/spi_core_100.hpp"
 #include <uhd/exception.hpp>
 #include <uhd/utils/msg.hpp>
 #include <boost/thread/thread.hpp> //sleep

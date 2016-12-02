@@ -18,7 +18,7 @@
 #ifndef INCLUDED_E300_REMOTE_CODEC_CTRL_HPP
 #define INCLUDED_E300_REMOTE_CODEC_CTRL_HPP
 
-#include "ad9361_ctrl.hpp"
+#include "usrp/common/ad9361_ctrl.hpp"
 #include <uhd/transport/zero_copy.hpp>
 
 namespace uhd { namespace usrp { namespace e300 {

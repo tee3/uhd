@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "ctrl_iface.hpp"
-#include "async_packet_handler.hpp"
+#include "rfnoc/ctrl_iface.hpp"
+#include "usrp/common/async_packet_handler.hpp"
 #include <uhd/exception.hpp>
 #include <uhd/utils/msg.hpp>
 #include <uhd/utils/byteswap.hpp>

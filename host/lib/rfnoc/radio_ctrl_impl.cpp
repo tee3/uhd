@@ -23,8 +23,8 @@
 #include <uhd/utils/msg.hpp>
 #include <uhd/types/ranges.hpp>
 #include <uhd/types/direction.hpp>
-#include "radio_ctrl_impl.hpp"
-#include "../../transport/super_recv_packet_handler.hpp"
+#include "rfnoc/radio_ctrl_impl.hpp"
+#include "transport/super_recv_packet_handler.hpp"
 
 using namespace uhd;
 using namespace uhd::rfnoc;

@@ -16,7 +16,7 @@
 //
 
 #include "lmk04816_regs.hpp"
-#include "x300_clock_ctrl.hpp"
+#include "usrp/x300/x300_clock_ctrl.hpp"
 #include <uhd/utils/safe_call.hpp>
 #include <uhd/utils/math.hpp>
 #include <boost/cstdint.hpp>

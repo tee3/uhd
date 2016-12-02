@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "codec_ctrl.hpp"
+#include "usrp/usrp2/usrp2_codec_ctrl.hpp"
 #include "ad9777_regs.hpp"
 #include "ads62p44_regs.hpp"
 #include "usrp2_regs.hpp"

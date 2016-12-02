@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "rx_frontend_core_3000.hpp"
-#include "dsp_core_utils.hpp"
+#include "usrp/cores/rx_frontend_core_3000.hpp"
+#include "usrp/cores/dsp_core_utils.hpp"
 #include <boost/math/special_functions/round.hpp>
 #include <boost/assign/list_of.hpp>
 #include <boost/bind.hpp>

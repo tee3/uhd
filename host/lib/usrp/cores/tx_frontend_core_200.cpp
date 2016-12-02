@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "tx_frontend_core_200.hpp"
+#include "usrp/cores/tx_frontend_core_200.hpp"
 #include <uhd/types/dict.hpp>
 #include <uhd/exception.hpp>
 #include <boost/assign/list_of.hpp>

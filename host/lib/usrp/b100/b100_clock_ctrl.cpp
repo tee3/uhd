@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2011 Ettus Research LLC
+// Copyright 2011,2014,2016 Ettus Research LLC
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,13 +15,15 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "clock_ctrl.hpp"
+#include "usrp/b100/b100_clock_ctrl.hpp"
 #include "ad9522_regs.hpp"
-#include <uhd/utils/msg.hpp>
 #include <uhd/utils/log.hpp>
+#include <uhd/utils/msg.hpp>
+#include <uhd/exception.hpp>
 #include <uhd/utils/assert_has.hpp>
+#include <uhd/utils/safe_call.hpp>
 #include <boost/cstdint.hpp>
-#include "e100_regs.hpp" //spi slave constants
+#include "usrp/b100/b100_regs.hpp" //spi slave constants
 #include <boost/assign/list_of.hpp>
 #include <boost/foreach.hpp>
 #include <boost/format.hpp>
@@ -87,12 +89,22 @@ struct clock_settings_type{
 
 //! gives the greatest divisor of num between 1 and max inclusive
 template<typename T> static inline T greatest_divisor(T num, T max){
-    for (T i = max; i > 1; i--) if (num%i == 0) return i; return 1;
+    for (T i = max; i > 1; i--){
+        if (num%i == 0){
+            return i;
+        }
+    }
+    return 1;
 }
 
 //! gives the least divisor of num between min and num exclusive
 template<typename T> static inline T least_divisor(T num, T min){
-    for (T i = min; i < num; i++) if (num%i == 0) return i; return 1;
+    for (T i = min; i < num; i++){
+        if (num%i == 0){
+            return i;
+        }
+    }
+    return 1;
 }
 
 static clock_settings_type get_clock_settings(double rate){
@@ -112,8 +124,8 @@ static clock_settings_type get_clock_settings(double rate){
     const size_t gcd = size_t(boost::math::gcd(ref_rate, out_rate));
 
     for (size_t i = 1; i <= 100; i++){
-        const size_t X = i*ref_rate/gcd;
-        const size_t Y = i*out_rate/gcd;
+        const size_t X = size_t(i*ref_rate/gcd);
+        const size_t Y = size_t(i*out_rate/gcd);
 
         //determine A and B (P is fixed)
         cs.b_counter = Y/cs.prescaler;
@@ -155,24 +167,26 @@ static clock_settings_type get_clock_settings(double rate){
             if (cs.get_vco_rate() < 1400e6 + vco_bound_pad) continue;
             if (cs.get_out_rate() != rate) continue;
 
-            UHD_MSG(status) << "USRP-E100 clock control: " << i << std::endl << cs.to_pp_string() << std::endl;
+            UHD_MSG(status) << "USRP-B100 clock control: " << i << std::endl << cs.to_pp_string() << std::endl;
             return cs;
         }
     }
 
     throw uhd::value_error(str(boost::format(
-        "USRP-E100 clock control: could not calculate settings for clock rate %fMHz"
+        "USRP-B100 clock control: could not calculate settings for clock rate %fMHz"
     ) % (rate/1e6)));
+}
+
+b100_clock_ctrl::~b100_clock_ctrl(void) {
+    /* NOP */
 }
 
 /***********************************************************************
  * Clock Control Implementation
  **********************************************************************/
-class e100_clock_ctrl_impl : public e100_clock_ctrl{
+class b100_clock_ctrl_impl : public b100_clock_ctrl{
 public:
-    e100_clock_ctrl_impl(spi_iface::sptr iface, double master_clock_rate, const bool dboard_clocks_diff):
-        _dboard_clocks_diff(dboard_clocks_diff)
-    {
+    b100_clock_ctrl_impl(i2c_iface::sptr iface, double master_clock_rate){
         _iface = iface;
         _chan_rate = 0.0;
         _out_rate = 0.0;
@@ -184,7 +198,6 @@ public:
         _ad9522_regs.soft_reset = 0;
 
         //init the clock gen registers
-        //Note: out0 should already be clocking the FPGA or this isnt going to work
         _ad9522_regs.sdo_active = ad9522_regs_t::SDO_ACTIVE_SDO_SDIO;
         _ad9522_regs.enb_stat_eeprom_at_stat_pin = 0; //use status pin
         _ad9522_regs.status_pin_control = 0x1; //n divider
@@ -194,19 +207,21 @@ public:
 
         this->use_internal_ref();
 
-        //initialize the FPGA clock rate
-        UHD_MSG(status) << boost::format("Initializing FPGA clock to %fMHz...") % (master_clock_rate/1e6) << std::endl;
-        this->set_fpga_clock_rate(master_clock_rate);
+        this->set_fpga_clock_rate(master_clock_rate); //initialize to something
 
+        this->enable_fpga_clock(true);
         this->enable_test_clock(ENABLE_THE_TEST_OUT);
         this->enable_rx_dboard_clock(false);
         this->enable_tx_dboard_clock(false);
     }
 
-    ~e100_clock_ctrl_impl(void){
-        this->enable_test_clock(ENABLE_THE_TEST_OUT);
-        this->enable_rx_dboard_clock(false);
-        this->enable_tx_dboard_clock(false);
+    ~b100_clock_ctrl_impl(void){
+        UHD_SAFE_CALL(
+            this->enable_test_clock(ENABLE_THE_TEST_OUT);
+            this->enable_rx_dboard_clock(false);
+            this->enable_tx_dboard_clock(false);
+            //this->enable_fpga_clock(false); //FIXME
+        )
     }
 
     /***********************************************************************
@@ -299,12 +314,23 @@ public:
         if (_out_rate == rate) return;
         if (rate == 61.44e6) set_clock_settings_with_external_vcxo(rate);
         else                 set_clock_settings_with_internal_vco(rate);
+        //clock rate changed! update dboard clocks and FPGA ticks per second
         set_rx_dboard_clock_rate(rate);
         set_tx_dboard_clock_rate(rate);
     }
 
     double get_fpga_clock_rate(void){
         return this->_out_rate;
+    }
+
+    /***********************************************************************
+     * FPGA clock enable
+     **********************************************************************/
+    void enable_fpga_clock(bool enb){
+        _ad9522_regs.out0_format = ad9522_regs_t::OUT0_FORMAT_LVDS;
+        _ad9522_regs.out0_lvds_power_down = !enb;
+        this->send_reg(0x0F0);
+        this->latch_regs();
     }
 
     /***********************************************************************
@@ -324,16 +350,8 @@ public:
      * RX Dboard Clock Control (output 9, divider 3)
      **********************************************************************/
     void enable_rx_dboard_clock(bool enb){
-        if (_dboard_clocks_diff){
-            _ad9522_regs.out9_format = ad9522_regs_t::OUT9_FORMAT_LVDS;
-            _ad9522_regs.out9_lvds_power_down = enb? 0 : 1;
-        }
-        else{
-            _ad9522_regs.out9_format = ad9522_regs_t::OUT9_FORMAT_CMOS;
-            _ad9522_regs.out9_cmos_configuration = (enb)?
-                ad9522_regs_t::OUT9_CMOS_CONFIGURATION_B_ON :
-                ad9522_regs_t::OUT9_CMOS_CONFIGURATION_OFF;
-        }
+        _ad9522_regs.out9_format = ad9522_regs_t::OUT9_FORMAT_LVDS;
+        _ad9522_regs.out9_lvds_power_down = !enb;
         this->send_reg(0x0F9);
         this->latch_regs();
     }
@@ -368,16 +386,8 @@ public:
      * TX Dboard Clock Control (output 6, divider 2)
      **********************************************************************/
     void enable_tx_dboard_clock(bool enb){
-        if (_dboard_clocks_diff){
-            _ad9522_regs.out6_format = ad9522_regs_t::OUT6_FORMAT_LVDS;
-            _ad9522_regs.out6_lvds_power_down = enb? 0 : 1;
-        }
-        else{
-            _ad9522_regs.out6_format = ad9522_regs_t::OUT6_FORMAT_CMOS;
-            _ad9522_regs.out6_cmos_configuration = (enb)?
-                ad9522_regs_t::OUT6_CMOS_CONFIGURATION_B_ON :
-                ad9522_regs_t::OUT6_CMOS_CONFIGURATION_OFF;
-        }
+        _ad9522_regs.out6_format = ad9522_regs_t::OUT6_FORMAT_LVDS;
+        _ad9522_regs.out6_lvds_power_down = !enb;
         this->send_reg(0x0F6);
         this->latch_regs();
     }
@@ -416,7 +426,7 @@ public:
         this->send_reg(0x01C);
         this->latch_regs();
     }
-    
+
     void use_external_ref(void) {
         _ad9522_regs.enable_ref2 = 0;
         _ad9522_regs.enable_ref1 = 1;
@@ -425,7 +435,7 @@ public:
         this->send_reg(0x01C);
         this->latch_regs();
     }
-    
+
     void use_auto_ref(void) {
         _ad9522_regs.enable_ref2 = 1;
         _ad9522_regs.enable_ref1 = 1;
@@ -437,17 +447,13 @@ public:
 
     bool get_locked(void){
         static const boost::uint8_t addr = 0x01F;
-        boost::uint32_t reg = _iface->read_spi(
-            UE_SPI_SS_AD9522, spi_config_t::EDGE_RISE,
-            _ad9522_regs.get_read_reg(addr), 24
-        );
+        boost::uint32_t reg = this->read_reg(addr);
         _ad9522_regs.set_reg(addr, reg);
         return _ad9522_regs.digital_lock_detect != 0;
     }
 
 private:
-    spi_iface::sptr _iface;
-    const bool _dboard_clocks_diff;
+    i2c_iface::sptr _iface;
     ad9522_regs_t _ad9522_regs;
     double _out_rate; //rate at the fpga and codec
     double _chan_rate; //rate before final dividers
@@ -461,11 +467,23 @@ private:
     void send_reg(boost::uint16_t addr){
         boost::uint32_t reg = _ad9522_regs.get_write_reg(addr);
         UHD_LOGV(often) << "clock control write reg: " << std::hex << reg << std::endl;
-        _iface->write_spi(
-            UE_SPI_SS_AD9522,
-            spi_config_t::EDGE_RISE,
-            reg, 24
-        );
+        byte_vector_t buf;
+        buf.push_back(boost::uint8_t(reg >> 16));
+        buf.push_back(boost::uint8_t(reg >> 8));
+        buf.push_back(boost::uint8_t(reg & 0xff));
+
+        _iface->write_i2c(0x5C, buf);
+    }
+
+    boost::uint8_t read_reg(boost::uint16_t addr){
+        byte_vector_t buf;
+        buf.push_back(boost::uint8_t(addr >> 8));
+        buf.push_back(boost::uint8_t(addr & 0xff));
+        _iface->write_i2c(0x5C, buf);
+
+        buf = _iface->read_i2c(0x5C, 1);
+
+        return boost::uint32_t(buf[0] & 0xFF);
     }
 
     void calibrate_now(void){
@@ -480,26 +498,20 @@ private:
         static const boost::uint8_t addr = 0x01F;
         for (size_t ms10 = 0; ms10 < 100; ms10++){
             boost::this_thread::sleep(boost::posix_time::milliseconds(10));
-            boost::uint32_t reg = _iface->read_spi(
-                UE_SPI_SS_AD9522, spi_config_t::EDGE_RISE,
-                _ad9522_regs.get_read_reg(addr), 24
-            );
+            boost::uint32_t reg = read_reg(addr);
             _ad9522_regs.set_reg(addr, reg);
             if (_ad9522_regs.vco_calibration_finished) goto wait_for_ld;
         }
-        UHD_MSG(error) << "USRP-E100 clock control: VCO calibration timeout" << std::endl;
+        UHD_MSG(error) << "USRP-B100 clock control: VCO calibration timeout" << std::endl;
         wait_for_ld:
         //wait for digital lock detect:
         for (size_t ms10 = 0; ms10 < 100; ms10++){
             boost::this_thread::sleep(boost::posix_time::milliseconds(10));
-            boost::uint32_t reg = _iface->read_spi(
-                UE_SPI_SS_AD9522, spi_config_t::EDGE_RISE,
-                _ad9522_regs.get_read_reg(addr), 24
-            );
+            boost::uint32_t reg = read_reg(addr);
             _ad9522_regs.set_reg(addr, reg);
             if (_ad9522_regs.digital_lock_detect) return;
         }
-        UHD_MSG(error) << "USRP-E100 clock control: lock detection timeout" << std::endl;
+        UHD_MSG(error) << "USRP-B100 clock control: lock detection timeout" << std::endl;
     }
 
     void soft_sync(void){
@@ -533,6 +545,6 @@ private:
 /***********************************************************************
  * Clock Control Make
  **********************************************************************/
-e100_clock_ctrl::sptr e100_clock_ctrl::make(spi_iface::sptr iface, double master_clock_rate, const bool dboard_clocks_diff){
-    return sptr(new e100_clock_ctrl_impl(iface, master_clock_rate, dboard_clocks_diff));
+b100_clock_ctrl::sptr b100_clock_ctrl::make(i2c_iface::sptr iface, double master_clock_rate){
+    return sptr(new b100_clock_ctrl_impl(iface, master_clock_rate));
 }

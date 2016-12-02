@@ -15,12 +15,12 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "x300_radio_ctrl_impl.hpp"
+#include "usrp/x300/x300_radio_ctrl_impl.hpp"
 
-#include "x300_dboard_iface.hpp"
+#include "usrp/x300/x300_dboard_iface.hpp"
 #include "wb_iface_adapter.hpp"
-#include "gpio_atr_3000.hpp"
-#include "apply_corrections.hpp"
+#include "usrp/cores/gpio_atr_3000.hpp"
+#include "usrp/common/apply_corrections.hpp"
 #include <uhd/usrp/dboard_eeprom.hpp>
 #include <uhd/utils/msg.hpp>
 #include <uhd/usrp/dboard_iface.hpp>

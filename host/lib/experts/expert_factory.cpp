@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "expert_factory.hpp"
+#include "experts/expert_factory.hpp"
 
 namespace uhd { namespace experts {
 

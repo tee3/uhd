@@ -18,7 +18,7 @@
 #ifndef INCLUDED_E300_DEFAULTS_HPP
 #define INCLUDED_E300_DEFAULTS_HPP
 
-#include "ad9361_client.h"
+#include "usrp/common/ad9361_driver/ad9361_client.h"
 
 namespace uhd { namespace usrp { namespace e300 {
 

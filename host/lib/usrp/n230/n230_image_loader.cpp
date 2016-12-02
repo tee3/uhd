@@ -27,7 +27,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/format.hpp>
 #include "n230_fw_host_iface.h"
-#include "n230_impl.hpp"
+#include "usrp/n230/n230_impl.hpp"
 
 using namespace uhd;
 using namespace uhd::usrp;

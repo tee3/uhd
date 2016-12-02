@@ -15,9 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "b200_cores.hpp"
-#include "b200_regs.hpp"
-#include "b200_impl.hpp"
+#include "usrp/b200/b200_cores.hpp"
+#include "usrp/b200/b200_regs.hpp"
+#include "usrp/b200/b200_impl.hpp"
 
 b200_local_spi_core::b200_local_spi_core(
     uhd::wb_iface::sptr iface,

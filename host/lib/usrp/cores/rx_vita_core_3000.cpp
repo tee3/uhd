@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "rx_vita_core_3000.hpp"
+#include "usrp/cores/rx_vita_core_3000.hpp"
 #include <uhd/utils/msg.hpp>
 #include <uhd/utils/safe_call.hpp>
 #include <boost/assign/list_of.hpp>

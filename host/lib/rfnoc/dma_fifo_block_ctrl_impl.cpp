@@ -16,7 +16,7 @@
 //
 
 #include <uhd/rfnoc/dma_fifo_block_ctrl.hpp>
-#include "dma_fifo_core_3000.hpp"
+#include "usrp/cores/dma_fifo_core_3000.hpp"
 #include "wb_iface_adapter.hpp"
 #include <uhd/convert.hpp>
 #include <uhd/utils/msg.hpp>

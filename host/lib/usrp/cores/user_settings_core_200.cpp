@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "user_settings_core_200.hpp"
+#include "usrp/cores/user_settings_core_200.hpp"
 
 using namespace uhd;
 

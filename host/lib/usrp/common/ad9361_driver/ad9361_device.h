@@ -18,7 +18,7 @@
 #ifndef INCLUDED_AD9361_DEVICE_H
 #define INCLUDED_AD9361_DEVICE_H
 
-#include <ad9361_client.h>
+#include "usrp/common/ad9361_driver/ad9361_client.h"
 #include <boost/noncopyable.hpp>
 #include <boost/thread/recursive_mutex.hpp>
 #include <uhd/types/filters.hpp>

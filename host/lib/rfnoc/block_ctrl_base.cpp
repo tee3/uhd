@@ -18,7 +18,7 @@
 // This file contains the block control functions for block controller classes.
 // See block_ctrl_base_factory.cpp for discovery and factory functions.
 
-#include "ctrl_iface.hpp"
+#include "rfnoc/ctrl_iface.hpp"
 #include "nocscript/block_iface.hpp"
 #include <uhd/utils/msg.hpp>
 #include <uhd/utils/log.hpp>

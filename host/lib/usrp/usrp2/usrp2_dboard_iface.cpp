@@ -15,9 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "gpio_core_200.hpp"
+#include "usrp/cores/gpio_core_200.hpp"
 #include <uhd/types/serial.hpp>
-#include "clock_ctrl.hpp"
+#include "usrp2_clock_ctrl.hpp"
 #include "usrp2_regs.hpp" //wishbone address constants
 #include "usrp2_fifo_ctrl.hpp"
 #include <uhd/usrp/dboard_iface.hpp>

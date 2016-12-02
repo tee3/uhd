@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "validate_subdev_spec.hpp"
+#include "usrp/common/validate_subdev_spec.hpp"
 #include <uhd/exception.hpp>
 #include <uhd/utils/assert_has.hpp>
 #include <boost/foreach.hpp>

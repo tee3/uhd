@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "x300_dboard_iface.hpp"
-#include "x300_regs.hpp"
+#include "usrp/x300/x300_dboard_iface.hpp"
+#include "usrp/x300/x300_regs.hpp"
 #include <uhd/utils/safe_call.hpp>
 #include <boost/assign/list_of.hpp>
 #include <boost/math/special_functions/round.hpp>

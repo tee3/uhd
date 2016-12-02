@@ -20,7 +20,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "adf4001_ctrl.hpp"
+#include "usrp/common/adf4001_ctrl.hpp"
 
 #include <uhd/utils/msg.hpp>
 #include <iostream>

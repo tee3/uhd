@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "x300_impl.hpp"
-#include "x300_lvbitx.hpp"
+#include "usrp/x300/x300_impl.hpp"
+#include "usrp/x300/x300_lvbitx.hpp"
 #include "x310_lvbitx.hpp"
-#include "apply_corrections.hpp"
+#include "usrp/common/apply_corrections.hpp"
 #include <boost/algorithm/string.hpp>
 #include <boost/asio.hpp>
 #include <uhd/utils/static.hpp>

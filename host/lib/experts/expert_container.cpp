@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "expert_container.hpp"
+#include "experts/expert_container.hpp"
 #include <uhd/exception.hpp>
 #include <uhd/utils/msg.hpp>
 #include <boost/format.hpp>

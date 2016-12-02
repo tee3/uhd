@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "dboard_ctor_args.hpp"
+#include "usrp/dboard_ctor_args.hpp"
 #include <uhd/usrp/dboard_manager.hpp>
 #include <uhd/utils/msg.hpp>
 #include <uhd/utils/log.hpp>

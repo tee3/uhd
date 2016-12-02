@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "validate_subdev_spec.hpp"
-#include "async_packet_handler.hpp"
-#include "../../transport/super_recv_packet_handler.hpp"
-#include "../../transport/super_send_packet_handler.hpp"
+#include "usrp/common/validate_subdev_spec.hpp"
+#include "usrp/common/async_packet_handler.hpp"
+#include "transport/super_recv_packet_handler.hpp"
+#include "transport/super_send_packet_handler.hpp"
 #include "usrp2_impl.hpp"
 #include "usrp2_regs.hpp"
 #include "fw_common.h"

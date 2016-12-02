@@ -19,7 +19,7 @@
 #include <uhd/utils/math.hpp>
 #include <uhd/utils/safe_call.hpp>
 #include "twinrx_ctrl.hpp"
-#include "adf435x.hpp"
+#include "usrp/common/adf435x.hpp"
 #include "adf5355.hpp"
 
 using namespace uhd;

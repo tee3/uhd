@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "validate_subdev_spec.hpp"
-#include "../../transport/super_recv_packet_handler.hpp"
-#include "../../transport/super_send_packet_handler.hpp"
-#include "b100_impl.hpp"
+#include "usrp/common/validate_subdev_spec.hpp"
+#include "transport/super_recv_packet_handler.hpp"
+#include "transport/super_send_packet_handler.hpp"
+#include "usrp/b100/b100_impl.hpp"
 #include <boost/bind.hpp>
 #include <boost/format.hpp>
 #include <boost/bind.hpp>

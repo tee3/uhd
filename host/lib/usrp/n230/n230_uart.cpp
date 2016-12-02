@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "n230_uart.hpp"
+#include "usrp/n230/n230_uart.hpp"
 
 #include <uhd/transport/bounded_buffer.hpp>
 #include <uhd/transport/vrt_if_packet.hpp>

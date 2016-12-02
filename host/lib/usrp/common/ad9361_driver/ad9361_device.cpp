@@ -18,7 +18,7 @@
 #include "ad9361_filter_taps.h"
 #include "ad9361_gain_tables.h"
 #include "ad9361_synth_lut.h"
-#include "ad9361_client.h"
+#include "usrp/common/ad9361_driver/ad9361_client.h"
 #include "ad9361_device.h"
 #define _USE_MATH_DEFINES
 #include <cmath>

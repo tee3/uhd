@@ -21,7 +21,7 @@
 
 #include "e300_impl.hpp"
 
-#include "ad9361_ctrl.hpp"
+#include "usrp/common/ad9361_ctrl.hpp"
 
 #include "e300_sensor_manager.hpp"
 #include "e300_fifo_config.hpp"

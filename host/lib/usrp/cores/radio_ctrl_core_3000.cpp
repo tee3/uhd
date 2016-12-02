@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "radio_ctrl_core_3000.hpp"
-#include "async_packet_handler.hpp"
+#include "usrp/cores/radio_ctrl_core_3000.hpp"
+#include "usrp/common/async_packet_handler.hpp"
 #include <uhd/exception.hpp>
 #include <uhd/utils/msg.hpp>
 #include <uhd/utils/byteswap.hpp>

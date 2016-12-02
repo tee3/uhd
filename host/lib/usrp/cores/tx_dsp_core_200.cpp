@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "tx_dsp_core_200.hpp"
-#include "dsp_core_utils.hpp"
+#include "usrp/cores/tx_dsp_core_200.hpp"
+#include "usrp/cores/dsp_core_utils.hpp"
 #include <uhd/types/dict.hpp>
 #include <uhd/exception.hpp>
 #include <uhd/utils/math.hpp>

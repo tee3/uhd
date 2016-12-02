@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "dsp_core_utils.hpp"
+#include "usrp/cores/dsp_core_utils.hpp"
 #include <uhd/rfnoc/ddc_block_ctrl.hpp>
 #include <uhd/utils/msg.hpp>
 #include <uhd/convert.hpp>

@@ -23,7 +23,7 @@
 #ifndef INCLUDED_LIBUHD_USRP_COMMON_ADF4001_HPP
 #define INCLUDED_LIBUHD_USRP_COMMON_ADF4001_HPP
 
-#include "spi_core_3000.hpp"
+#include "usrp/cores/spi_core_3000.hpp"
 #include <uhd/types/serial.hpp>
 #include <boost/cstdint.hpp>
 #include <boost/thread/thread.hpp>

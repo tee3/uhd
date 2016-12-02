@@ -15,9 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "apply_corrections.hpp"
-#include "b100_impl.hpp"
-#include "b100_regs.hpp"
+#include "usrp/common/apply_corrections.hpp"
+#include "usrp/b100/b100_impl.hpp"
+#include "usrp/b100/b100_regs.hpp"
 #include <uhd/transport/usb_control.hpp>
 #include <uhd/utils/msg.hpp>
 #include <uhd/utils/cast.hpp>

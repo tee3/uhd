@@ -15,13 +15,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "validate_subdev_spec.hpp"
+#include "usrp/common/validate_subdev_spec.hpp"
 #define SRPH_DONT_CHECK_SEQUENCE
-#include "../../transport/super_recv_packet_handler.hpp"
+#include "transport/super_recv_packet_handler.hpp"
 #define SSPH_DONT_PAD_TO_ONE
-#include "../../transport/super_send_packet_handler.hpp"
-#include "usrp1_calc_mux.hpp"
-#include "usrp1_impl.hpp"
+#include "transport/super_send_packet_handler.hpp"
+#include "usrp/usrp1/usrp1_calc_mux.hpp"
+#include "usrp/usrp1/usrp1_impl.hpp"
 #include <uhd/utils/msg.hpp>
 #include <uhd/utils/tasks.hpp>
 #include <uhd/utils/safe_call.hpp>

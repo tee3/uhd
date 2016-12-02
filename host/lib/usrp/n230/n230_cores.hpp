@@ -18,8 +18,8 @@
 #ifndef INCLUDED_N230_CORES_HPP
 #define INCLUDED_N230_CORES_HPP
 
-#include "spi_core_3000.hpp"
-#include "adf4001_ctrl.hpp"
+#include "usrp/cores/spi_core_3000.hpp"
+#include "usrp/common/adf4001_ctrl.hpp"
 #include <boost/thread/mutex.hpp>
 
 namespace uhd { namespace usrp { namespace n230 {

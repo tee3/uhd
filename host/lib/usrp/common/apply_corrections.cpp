@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "apply_corrections.hpp"
+#include "usrp/common/apply_corrections.hpp"
 #include <uhd/usrp/dboard_eeprom.hpp>
 #include <uhd/utils/paths.hpp>
 #include <uhd/utils/msg.hpp>

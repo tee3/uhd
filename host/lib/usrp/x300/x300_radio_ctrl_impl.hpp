@@ -18,14 +18,14 @@
 #ifndef INCLUDED_LIBUHD_RFNOC_X300_RADIO_CTRL_IMPL_HPP
 #define INCLUDED_LIBUHD_RFNOC_X300_RADIO_CTRL_IMPL_HPP
 
-#include "radio_ctrl_impl.hpp"
-#include "x300_clock_ctrl.hpp"
-#include "spi_core_3000.hpp"
-#include "x300_adc_ctrl.hpp"
-#include "x300_dac_ctrl.hpp"
-#include "x300_regs.hpp"
-#include "rx_frontend_core_3000.hpp"
-#include "tx_frontend_core_200.hpp"
+#include "rfnoc/radio_ctrl_impl.hpp"
+#include "usrp/x300/x300_clock_ctrl.hpp"
+#include "usrp/cores/spi_core_3000.hpp"
+#include "usrp/x300/x300_adc_ctrl.hpp"
+#include "usrp/x300/x300_dac_ctrl.hpp"
+#include "usrp/x300/x300_regs.hpp"
+#include "usrp/cores/rx_frontend_core_3000.hpp"
+#include "usrp/cores/tx_frontend_core_200.hpp"
 #include <uhd/usrp/dboard_eeprom.hpp>
 #include <uhd/usrp/dboard_manager.hpp>
 #include <uhd/usrp/gpio_defs.hpp>

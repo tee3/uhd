@@ -18,8 +18,8 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/format.hpp>
 #include <boost/make_shared.hpp>
-#include "../lib/experts/expert_container.hpp"
-#include "../lib/experts/expert_factory.hpp"
+#include "experts/expert_container.hpp"
+#include "experts/expert_factory.hpp"
 #include <uhd/property_tree.hpp>
 #include <fstream>
 

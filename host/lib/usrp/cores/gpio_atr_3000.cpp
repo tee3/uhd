@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "gpio_atr_3000.hpp"
+#include "usrp/cores/gpio_atr_3000.hpp"
 #include <uhd/types/dict.hpp>
 #include <uhd/utils/soft_register.hpp>
 

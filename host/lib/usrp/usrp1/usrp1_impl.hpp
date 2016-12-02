@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "usrp1_iface.hpp"
-#include "codec_ctrl.hpp"
+#include "usrp/usrp1/usrp1_iface.hpp"
+#include "usrp/usrp1/usrp1_codec_ctrl.hpp"
 #include "soft_time_ctrl.hpp"
 #include <uhd/device.hpp>
 #include <uhd/property_tree.hpp>

@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "fx2_ctrl.hpp"
+#include "usrp/common/fx2_ctrl.hpp"
 #include <uhd/utils/msg.hpp>
 #include <uhd/exception.hpp>
 #include <uhd/transport/usb_control.hpp>

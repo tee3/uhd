@@ -18,11 +18,11 @@
 #ifndef INCLUDED_X300_DBOARD_IFACE_HPP
 #define INCLUDED_X300_DBOARD_IFACE_HPP
 
-#include "x300_clock_ctrl.hpp"
-#include "spi_core_3000.hpp"
-#include "i2c_core_100_wb32.hpp"
-#include "gpio_atr_3000.hpp"
-#include "rx_frontend_core_3000.hpp"
+#include "usrp/x300/x300_clock_ctrl.hpp"
+#include "usrp/cores/spi_core_3000.hpp"
+#include "usrp/cores/i2c_core_100_wb32.hpp"
+#include "usrp/cores/gpio_atr_3000.hpp"
+#include "usrp/cores/rx_frontend_core_3000.hpp"
 #include <uhd/usrp/dboard_iface.hpp>
 #include "ad7922_regs.hpp" //aux adc
 #include "ad5623_regs.hpp" //aux dac

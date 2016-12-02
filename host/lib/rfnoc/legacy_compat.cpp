@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "legacy_compat.hpp"
+#include "rfnoc/legacy_compat.hpp"
 #include "../usrp/device3/device3_impl.hpp"
 #include <uhd/property_tree.hpp>
 #include <uhd/rfnoc/radio_ctrl.hpp>

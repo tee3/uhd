@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#include "usrp1_impl.hpp"
+#include "usrp/usrp1/usrp1_impl.hpp"
 #include <uhd/utils/log.hpp>
 #include <uhd/utils/safe_call.hpp>
 #include <uhd/transport/usb_control.hpp>

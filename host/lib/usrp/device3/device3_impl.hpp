@@ -31,19 +31,19 @@
 #include <uhd/types/direction.hpp>
 #include <uhd/utils/tasks.hpp>
 #include <uhd/device3.hpp>
-#include "xports.hpp"
+#include "rfnoc/xports.hpp"
 // Common FPGA cores:
-#include "ctrl_iface.hpp"
-#include "rx_dsp_core_3000.hpp"
-#include "tx_dsp_core_3000.hpp"
-#include "rx_vita_core_3000.hpp"
-#include "tx_vita_core_3000.hpp"
-#include "rx_frontend_core_200.hpp"
-#include "tx_frontend_core_200.hpp"
-#include "time_core_3000.hpp"
-#include "gpio_atr_3000.hpp"
+#include "rfnoc/ctrl_iface.hpp"
+#include "usrp/cores/rx_dsp_core_3000.hpp"
+#include "usrp/cores/tx_dsp_core_3000.hpp"
+#include "usrp/cores/rx_vita_core_3000.hpp"
+#include "usrp/cores/tx_vita_core_3000.hpp"
+#include "usrp/cores/rx_frontend_core_200.hpp"
+#include "usrp/cores/tx_frontend_core_200.hpp"
+#include "usrp/cores/time_core_3000.hpp"
+#include "usrp/cores/gpio_atr_3000.hpp"
 // RFNoC-specific includes:
-#include "radio_ctrl_impl.hpp"
+#include "rfnoc/radio_ctrl_impl.hpp"
 
 namespace uhd { namespace usrp {
 

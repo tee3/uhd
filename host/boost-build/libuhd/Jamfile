@@ -233,15 +233,15 @@ lib libuhd
     $(root)/host/lib/types/types.cpp
     $(root)/host/lib/types/usrp_info_c.cpp
     $(root)/host/lib/types/wb_iface.cpp
+    $(root)/host/lib/usrp/b100/b100_clock_ctrl.cpp
+    $(root)/host/lib/usrp/b100/b100_clock_ctrl.hpp
+    $(root)/host/lib/usrp/b100/b100_codec_ctrl.cpp
+    $(root)/host/lib/usrp/b100/b100_codec_ctrl.hpp
+    $(root)/host/lib/usrp/b100/b100_dboard_iface.cpp
     $(root)/host/lib/usrp/b100/b100_impl.cpp
     $(root)/host/lib/usrp/b100/b100_impl.hpp
+    $(root)/host/lib/usrp/b100/b100_io_impl.cpp
     $(root)/host/lib/usrp/b100/b100_regs.hpp
-    $(root)/host/lib/usrp/b100/clock_ctrl.cpp
-    $(root)/host/lib/usrp/b100/clock_ctrl.hpp
-    $(root)/host/lib/usrp/b100/codec_ctrl.cpp
-    $(root)/host/lib/usrp/b100/codec_ctrl.hpp
-    $(root)/host/lib/usrp/b100/dboard_iface.cpp
-    $(root)/host/lib/usrp/b100/io_impl.cpp
     $(root)/host/lib/usrp/b100/usb_zero_copy_wrapper.cpp
     $(root)/host/lib/usrp/b200/b200_cores.cpp
     $(root)/host/lib/usrp/b200/b200_cores.hpp
@@ -366,19 +366,19 @@ lib libuhd
     $(root)/host/lib/usrp/device3/device3_impl.cpp
     $(root)/host/lib/usrp/device3/device3_impl.hpp
     $(root)/host/lib/usrp/device3/device3_io_impl.cpp
-    $(root)/host/lib/usrp/e100/clock_ctrl.cpp
-    $(root)/host/lib/usrp/e100/clock_ctrl.hpp
-    $(root)/host/lib/usrp/e100/codec_ctrl.cpp
-    $(root)/host/lib/usrp/e100/codec_ctrl.hpp
-    $(root)/host/lib/usrp/e100/dboard_iface.cpp
+    $(root)/host/lib/usrp/e100/e100_clock_ctrl.cpp
+    $(root)/host/lib/usrp/e100/e100_clock_ctrl.hpp
+    $(root)/host/lib/usrp/e100/e100_codec_ctrl.cpp
+    $(root)/host/lib/usrp/e100/e100_codec_ctrl.hpp
     $(root)/host/lib/usrp/e100/e100_ctrl.cpp
     $(root)/host/lib/usrp/e100/e100_ctrl.hpp
+    $(root)/host/lib/usrp/e100/e100_dboard_iface.cpp
     $(root)/host/lib/usrp/e100/e100_impl.cpp
     $(root)/host/lib/usrp/e100/e100_impl.hpp
+    $(root)/host/lib/usrp/e100/e100_io_impl.cpp
     $(root)/host/lib/usrp/e100/e100_mmap_zero_copy.cpp
     $(root)/host/lib/usrp/e100/e100_regs.hpp
     $(root)/host/lib/usrp/e100/fpga_downloader.cpp
-    $(root)/host/lib/usrp/e100/io_impl.cpp
     $(root)/host/lib/usrp/e300/e300_common.cpp
     $(root)/host/lib/usrp/e300/e300_common.hpp
     $(root)/host/lib/usrp/e300/e300_defaults.hpp
@@ -431,31 +431,31 @@ lib libuhd
     $(root)/host/lib/usrp/n230/n230_uart.hpp
     $(root)/host/lib/usrp/subdev_spec.cpp
     $(root)/host/lib/usrp/subdev_spec_c.cpp
-    $(root)/host/lib/usrp/usrp1/codec_ctrl.cpp
-    $(root)/host/lib/usrp/usrp1/codec_ctrl.hpp
-    $(root)/host/lib/usrp/usrp1/dboard_iface.cpp
-    $(root)/host/lib/usrp/usrp1/io_impl.cpp
     $(root)/host/lib/usrp/usrp1/soft_time_ctrl.cpp
     $(root)/host/lib/usrp/usrp1/soft_time_ctrl.hpp
     $(root)/host/lib/usrp/usrp1/usrp1_calc_mux.hpp
+    $(root)/host/lib/usrp/usrp1/usrp1_codec_ctrl.cpp
+    $(root)/host/lib/usrp/usrp1/usrp1_codec_ctrl.hpp
+    $(root)/host/lib/usrp/usrp1/usrp1_dboard_iface.cpp
     $(root)/host/lib/usrp/usrp1/usrp1_iface.cpp
     $(root)/host/lib/usrp/usrp1/usrp1_iface.hpp
     $(root)/host/lib/usrp/usrp1/usrp1_impl.cpp
     $(root)/host/lib/usrp/usrp1/usrp1_impl.hpp
-    $(root)/host/lib/usrp/usrp2/clock_ctrl.cpp
-    $(root)/host/lib/usrp/usrp2/clock_ctrl.hpp
-    $(root)/host/lib/usrp/usrp2/codec_ctrl.cpp
-    $(root)/host/lib/usrp/usrp2/codec_ctrl.hpp
-    $(root)/host/lib/usrp/usrp2/dboard_iface.cpp
-    $(root)/host/lib/usrp/usrp2/io_impl.cpp
+    $(root)/host/lib/usrp/usrp1/usrp1_io_impl.cpp
     $(root)/host/lib/usrp/usrp2/n200_image_loader.cpp
     $(root)/host/lib/usrp/usrp2/usrp2_clk_regs.hpp
+    $(root)/host/lib/usrp/usrp2/usrp2_clock_ctrl.cpp
+    $(root)/host/lib/usrp/usrp2/usrp2_clock_ctrl.hpp
+    $(root)/host/lib/usrp/usrp2/usrp2_codec_ctrl.cpp
+    $(root)/host/lib/usrp/usrp2/usrp2_codec_ctrl.hpp
+    $(root)/host/lib/usrp/usrp2/usrp2_dboard_iface.cpp
     $(root)/host/lib/usrp/usrp2/usrp2_fifo_ctrl.cpp
     $(root)/host/lib/usrp/usrp2/usrp2_fifo_ctrl.hpp
     $(root)/host/lib/usrp/usrp2/usrp2_iface.cpp
     $(root)/host/lib/usrp/usrp2/usrp2_iface.hpp
     $(root)/host/lib/usrp/usrp2/usrp2_impl.cpp
     $(root)/host/lib/usrp/usrp2/usrp2_impl.hpp
+    $(root)/host/lib/usrp/usrp2/usrp2_io_impl.cpp
     $(root)/host/lib/usrp/usrp2/usrp2_regs.hpp
     $(root)/host/lib/usrp/usrp_c.cpp
     $(root)/host/lib/usrp/x300/x300_adc_ctrl.cpp
