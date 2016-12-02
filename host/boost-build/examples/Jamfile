@@ -1,0 +1,62 @@
+path-constant root : ../../.. ;
+
+local examples-programs =
+    benchmark_rate
+    gpio
+    latency_test
+    network_relay
+    rx_ascii_art_dft
+    rx_multi_samples
+    rx_samples_to_file
+    rx_samples_to_udp
+    rx_timed_samples
+    sync_to_gps
+    test_clock_synch
+    test_dboard_coercion
+    test_messages
+    test_pps_input
+    test_timed_commands
+    tx_bursts
+    tx_samples_from_file
+    tx_timed_samples
+    tx_waveforms
+    txrx_loopback_to_file
+  ;
+
+explicit examples ;
+alias examples : $(examples-programs) ;
+
+for p in $(examples-programs)
+{
+  explicit $(p) ;
+  exe $(p)
+    : # sources
+
+      $(root)/host/examples/$(p).cpp
+
+      $(root)/host/boost-build/examples//libexamples
+
+    ;
+}
+
+lib libexamples
+  : # sources
+
+    $(root)/host/examples/ascii_art_dft.hpp
+    $(root)/host/examples/wavetable.hpp
+
+    $(root)/host/examples/init_usrp/init_usrp.cpp
+
+    $(root)/host/boost-build/libuhd//libuhd
+
+  : # requirements
+
+    <include>$(root)/host/examples
+
+  : # default-build
+
+  : # usage-requirements
+
+    <include>$(root)/host/examples
+
+  ;

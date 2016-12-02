@@ -1,0 +1,31 @@
+path-constant root : ../../.. ;
+
+local utils-programs =
+    b2xx_fx3_utils
+    converter_benchmark
+    fx2_init_eeprom
+    latency/include/Responder.hpp
+    latency/lib/Responder
+    latency/responder
+    octoclock_burn_eeprom
+    octoclock_firmware_burner
+    query_gpsdo_sensors
+    uhd_cal_rx_iq_balance
+    uhd_cal_tx_dc_offset
+    uhd_cal_tx_iq_balance
+    uhd_config_info
+    uhd_find_devices
+    uhd_image_loader
+    uhd_usrp_probe
+    usrp_burn_db_eeprom
+    usrp_burn_mb_eeprom
+    usrp_cal_utils.hpp
+    usrp_e3x0_network_mode
+    usrp_n2xx_simple_net_burner
+    usrp_x3xx_fpga_burner
+  ;
+
+for p in $(utils-programs)
+{
+  exe $(p) : $(root)/host/utils/b2xx_fx3_utils.cpp ;
+}

@@ -1,0 +1,5 @@
+build-project host/boost-build/libuhd ;
+build-project host/boost-build/tests ;
+
+build-project host/boost-build/examples ;
+build-project host/boost-build/utils ;

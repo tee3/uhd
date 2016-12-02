@@ -2,3 +2,7 @@ debian
 *~
 *swp
 *.pyc
+
+# Boost.Build
+/bin/
+/host/boost-build/*/bin/

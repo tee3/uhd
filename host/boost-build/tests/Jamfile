@@ -1,0 +1,71 @@
+import testing ;
+
+path-constant root : ../../.. ;
+
+local tests-programs =
+    addr_test
+    block_id_test
+    blockdef_test
+    buffer_test
+    byteswap_test
+    cast_test
+    chdr_test
+    convert_test
+    device3_test
+    dict_test
+    error_c_test
+    error_test
+    expert_test
+    fe_conn_test
+    fp_compare_delta_test
+    fp_compare_epsilon_test
+    gain_group_test
+    graph_search_test
+    math_test
+    module_test
+    msg_test
+    nocscript_expr_test
+    nocscript_ftable_test
+    nocscript_parser_test
+    node_connect_test
+    property_test
+    ranges_test
+    rate_node_test
+    sid_t_test
+    sph_recv_test
+    sph_send_test
+    stream_sig_test
+    subdev_spec_test
+    tick_node_test
+    time_spec_test
+    vrt_test
+  ;
+
+for p in $(tests-programs)
+{
+  run $(root)/host/tests/$(p).cpp
+    :
+    :
+    :
+      <use>$(root)/host/boost-build/libuhd//libuhd
+      <use>$(root)/host/boost-build/tests//libtests
+    ;
+}
+
+alias libtests
+  : # sources
+
+    $(root)/host/tests/graph.hpp
+    $(root)/host/tests/nocscript_common.hpp
+
+  : # requirements
+
+    <include>$(root)/host/tests
+
+  : # default-build
+
+  : # usage-requirements
+
+    <include>$(root)/host/tests
+
+  ;
